@@ -29,6 +29,9 @@ SRCS = 	ps_main.c \
 		ps_opert_push.c \
 		ps_opert_rotate.c \
 		ps_opert_rrotate.c \
+		ps_push_swap.c \
+		ps_sort_three.c \
+		ps_tim_sort.c
 
 SRCS := $(addprefix $(SRCS_DIR)/, $(SRCS))
 OBJS := $(addprefix $(OBJS_DIR)/, $(notdir $(SRCS:.c=.o)))

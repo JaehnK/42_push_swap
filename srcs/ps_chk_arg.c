@@ -50,4 +50,3 @@ void	ft_check_ag(int argc, char **argv)
 		}
 	}
 }
-

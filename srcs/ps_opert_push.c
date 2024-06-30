@@ -15,11 +15,11 @@
 void	pa(t_stacks *stk, int verbose)
 {
 	if (!stk->len_b)
-		return;
-	
+		return ;
 	ft_memmove((void *) stk->a + 4, (void *)stk->a, stk->len_a * sizeof(int));
 	stk->a[0] = stk->b[0];
-	ft_memmove((void *) stk->b, (void *) stk->b + 4, stk->len_b * sizeof(int));
+	ft_memmove((void *) stk->b, (void *) stk->b + 4, \
+				(stk->len_b - 1) * sizeof(int));
 	stk->len_a++;
 	stk->len_b--;
 	if (verbose)
@@ -29,11 +29,11 @@ void	pa(t_stacks *stk, int verbose)
 void	pb(t_stacks *stk, int verbose)
 {
 	if (!stk->len_a)
-		return;
-	
+		return ;
 	ft_memmove((void *) stk->b + 4, (void *) stk->b, stk->len_b * sizeof(int));
 	stk->b[0] = stk->a[0];
-	ft_memmove((void *) stk->a, (void *) stk->a + 4, (stk->len_a - 1)* sizeof(int));
+	ft_memmove((void *) stk->a, (void *) stk->a + 4, \
+				(stk->len_a - 1) * sizeof(int));
 	stk->len_b++;
 	stk->len_a--;
 	if (verbose)

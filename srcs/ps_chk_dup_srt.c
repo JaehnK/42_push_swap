@@ -22,7 +22,6 @@ static void	ft_dup_chk(t_stacks *stk)
 	while (idx < stk->len_a)
 	{
 		dup_arr[stk->a[idx] - stk->min]++;
-		// ft_printf("idx : %d val: %d\n", stk->a[idx] - stk->min, dup_arr[stk->a[idx] - stk->min]);
 		if (dup_arr[stk->a[idx] - stk->min] > 1)
 			ft_error();
 		idx++;
@@ -30,7 +29,7 @@ static void	ft_dup_chk(t_stacks *stk)
 	free(dup_arr);
 }
 
-static void	ft_sort_chk(t_stacks *stk)
+int	ft_sort_chk(t_stacks *stk)
 {
 	int	idx;
 	int	max;
@@ -42,14 +41,15 @@ static void	ft_sort_chk(t_stacks *stk)
 		if (stk->a[idx] >= max)
 			max = stk->a[idx];
 		else
-			return;
+			return (0);
 		idx++;
 	}
-	ft_error();
+	return (1);
 }
 
 void	ft_dup_srt_chk(t_stacks *stk)
 {
 	ft_dup_chk(stk);
-	ft_sort_chk(stk);
+	if (ft_sort_chk(stk))
+		ft_error();
 }

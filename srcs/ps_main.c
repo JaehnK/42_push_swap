@@ -17,7 +17,8 @@ void	ft_error(void)
 	write(STDERR_FILENO, "Error\n", 6);
 	exit(EXIT_FAILURE);
 }
-void ft_print_stacks(t_stacks *stk)
+
+void	ft_print_stacks(t_stacks *stk)
 {
 	int	idx;
 
@@ -36,6 +37,7 @@ void ft_print_stacks(t_stacks *stk)
 	}
 	ft_printf("----\na  b\n");
 }
+
 int	main(int argc, char **argv)
 {
 	int			idx;
@@ -47,13 +49,7 @@ int	main(int argc, char **argv)
 	ft_check_ag(argc, argv);
 	ft_init_stack(&stack, argc, argv);
 	ft_dup_srt_chk(stack);
-
-	pb(stack, 1);
-	pb(stack, 1);
-	rb(stack, 1);
-	ft_print_stacks(stack);
-	rr(stack, 1);
-	ft_print_stacks(stack);
+	ft_push_swap(stack);
 	free(stack->a);
 	free(stack->b);
 	free(stack);
