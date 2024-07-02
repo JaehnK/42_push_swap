@@ -12,26 +12,44 @@
 
 #include "../includes/push_swap.h"
 
-void	rra(t_stacks *stk, int verbose)
+void	rra(t_stack *a, int verbose)
 {
-	ft_memmove((void *) stk->a + 4, (void *) stk->a, stk->len_a * sizeof(int));
-	stk->a[0] = stk->a[stk->len_a];
+	t_node	*node;
+
+	if (a->size < 2)
+		return ;
+	node = a->tail;
+	node->prev = NULL;
+	node->next = a->head;
+	a->tail = a->tail->prev;
+	a->head->prev = node;
+	a->head = node;
 	if (verbose)
 		write(1, "rra\n", 4);
 }
 
-void	rrb(t_stacks *stk, int verbose)
+void	rrb(t_stack *b, int verbose)
 {
-	ft_memmove((void *) stk->b + 4, (void *) stk->b, stk->len_b * sizeof(int));
-	stk->b[0] = stk->b[stk->len_b];
+	t_node	*node;
+
+	if (b->size < 2)
+		return ;
+	node = b->tail;
+	node->prev = NULL;
+	node->next = b->head;
+	b->tail = b->tail->prev;
+	b->head->prev = node;
+	b->head = node;
 	if (verbose)
 		write(1, "rrb\n", 4);
 }
 
-void	rrr(t_stacks *stk, int verbose)
+void	rrr(t_stack *a, t_stack *b, int verbose)
 {
-	rra(stk, 0);
-	rrb(stk, 0);
+	if (a->size < 2 || b->size < 2)
+		return ;
+	rra(a, 0);
+	rrb(b, 0);
 	if (verbose)
-		write(1, "rrr\n", 5);
+		write(1, "rrr\n", 4);
 }

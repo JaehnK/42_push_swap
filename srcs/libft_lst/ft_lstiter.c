@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_push_swap.c                                     :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehukim <jaehukim42@student.42gyeong      +#+  +:+       +#+        */
+/*   By: jaehukim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/30 17:04:32 by jaehukim          #+#    #+#             */
-/*   Updated: 2024/06/30 17:04:35 by jaehukim         ###   ########.fr       */
+/*   Created: 2024/03/13 17:30:02 by jaehukim          #+#    #+#             */
+/*   Updated: 2024/03/13 21:06:23 by jaehukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+#include "libft.h"
 #include "../includes/push_swap.h"
 
-void	ft_push_swap(t_stack *stk)
+void	ft_lstiter(t_node *lst, char *(*f)(int))
 {
-	return ;
+	while (lst)
+	{
+		lst->base = f(lst->num);
+		lst = lst->next;
+	}
 }

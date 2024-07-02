@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_push_swap.c                                     :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehukim <jaehukim42@student.42gyeong      +#+  +:+       +#+        */
+/*   By: jaehukim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/30 17:04:32 by jaehukim          #+#    #+#             */
-/*   Updated: 2024/06/30 17:04:35 by jaehukim         ###   ########.fr       */
+/*   Created: 2024/03/12 20:01:08 by jaehukim          #+#    #+#             */
+/*   Updated: 2024/03/13 19:58:48 by jaehukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+#include "libft.h"
 #include "../includes/push_swap.h"
 
-void	ft_push_swap(t_stack *stk)
+t_node	*ft_lstlast(t_node *lst)
 {
-	return ;
+	if (!lst)
+		return (NULL);
+	while (lst->next != NULL)
+		lst = lst->next;
+	return (lst);
 }

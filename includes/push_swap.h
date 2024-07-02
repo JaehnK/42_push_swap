@@ -16,39 +16,57 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <limits.h>
-#include "../libft/libft.h"
+# include "../libft/libft.h"
 
-typedef struct s_stacks
+typedef	struct	s_node
 {
-	int	*a;
-	int	*b;
-	int	len_a;
-	int	len_b;
-	int	min;
-	int	max;
-}	t_stacks;
+	int				num;
+	int				idx;
+	char			*base;
+	struct	s_node	*next;
+	struct	s_node	*prev;
+}	t_node;
+
+typedef struct	s_stack
+{
+	int		size;
+	t_node	*head;
+	t_node	*tail;
+}	t_stack;
+
 
 
 void	ft_error(void);
 void	ft_check_ag(int argc, char **argv);
-void	ft_init_stack(t_stacks **stack, int argc, char **argv);
-int		ft_sort_chka(t_stacks *stk);
-int		ft_sort_chkb(t_stacks *stk);
-void	ft_dup_srt_chk(t_stacks *stack);
-void	ft_print_stacks(t_stacks *stk);
+t_stack	*ft_init_stack(int argc, char **argv);
+t_stack *ft_init_stk_b(void);
+
+//int		ft_sort_chka(t_stack *stk);
+//int		ft_sort_chkb(t_stack *stk);
+//void	ft_dup_srt_chk(t_stack *stack);
+//void	ft_print_stacks(t_stack *stk);
+
+t_node	*ft_lstnew(int num, int idx);
+void	ft_lstadd_front(t_node **lst, t_node *new);
+int		ft_lstsize(t_node *lst);
+t_node	*ft_lstlast(t_node *lst);
+void	ft_lstadd_back(t_node **lst, t_node **new);
+void	ft_lstdelone(t_node *lst, void (*del)(void *));
+void	ft_lstclear(t_node **lst, void (*del)(void *));
+void	ft_lstiter(t_node *lst, char *(*f)(int));
+
 void	swap(int *a, int *b);
-void	sa(t_stacks *stk, int verbose);
-void	sb(t_stacks *stk, int verbose);
-void	ss(t_stacks *stk, int verbose);
-void	pa(t_stacks *stk, int verbose);
-void	pb(t_stacks *stk, int verbose);
-void	ra(t_stacks *stk, int verbose);
-void	rb(t_stacks *stk, int verbose);
-void	rr(t_stacks *stk, int verbose);
-void	rra(t_stacks *stk, int verbose);
-void	rrb(t_stacks *stk, int verbose);
-void	rrr(t_stacks *stk, int verbose);
-void	ft_push_swap(t_stacks *stk);
-void	ft_sort_under_three(t_stacks *stk);
-void	insertion_sort(t_stacks *stk);
+void	sa(t_stack *a, int verbose);
+void	sb(t_stack *a, int verbose);
+void	ss(t_stack *a, t_stack *b, int verbose);
+void	pa(t_stack *a, t_stack *b, int verbose);
+void	pb(t_stack *a, t_stack *b, int verbose);
+void	ra(t_stack *a, int verbose);
+void	rb(t_stack *a, int verbose);
+void	rr(t_stack *a, t_stack *b, int verbose);
+void	rra(t_stack *a, int verbose);
+void	rrb(t_stack *a, int verbose);
+void	rrr(t_stack *a, t_stack *b, int verbose);
+//void	ft_push_swap(t_stack *stk);
+//void	ft_sort_under_three(t_stack *stk);
 #endif

@@ -21,20 +21,28 @@ SUBDIR = ./libft
 SRCS_DIR = srcs
 OBJS_DIR = objs
 
-SRCS = 	ps_main.c \
+SRCS = 	libft_lst/ft_lstadd_back.c\
+		libft_lst/ft_lstadd_front.c\
+		libft_lst/ft_lstclear.c\
+		libft_lst/ft_lstdelone.c\
+		libft_lst/ft_lstiter.c\
+		libft_lst/ft_lstlast.c\
+		libft_lst/ft_lstnew.c\
+		libft_lst/ft_lstsize.c\
+		ps_main.c \
 		ps_chk_arg.c \
 		ps_chk_dup_srt.c \
-		ps_parse.c \
 		ps_opert_swap.c \
 		ps_opert_push.c \
 		ps_opert_rotate.c \
 		ps_opert_rrotate.c \
 		ps_push_swap.c \
 		ps_sort_three.c \
-		ps_tim_sort.c
+		ps_parse_lst.c \
+
 
 SRCS := $(addprefix $(SRCS_DIR)/, $(SRCS))
-OBJS := $(addprefix $(OBJS_DIR)/, $(notdir $(SRCS:.c=.o)))
+OBJS := $(patsubst $(SRCS_DIR)/%.c,$(OBJS_DIR)/%.o,$(SRCS))
 
 all: $(NAME)
 
@@ -45,7 +53,7 @@ $(LIB) :
 	@$(MAKE) -C $(SUBDIR)
 
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c $(HEADR)
-	@mkdir -p $(OBJS_DIR)
+	@mkdir -p $(@D)
 	@$(CC) $(CFLAGS) -I$(SUBDIR)  -c $< -o $@
 
 clean:

@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_push_swap.c                                     :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehukim <jaehukim42@student.42gyeong      +#+  +:+       +#+        */
+/*   By: jaehukim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/30 17:04:32 by jaehukim          #+#    #+#             */
-/*   Updated: 2024/06/30 17:04:35 by jaehukim         ###   ########.fr       */
+/*   Created: 2024/03/12 16:09:55 by jaehukim          #+#    #+#             */
+/*   Updated: 2024/03/12 20:21:16 by jaehukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "../includes/push_swap.h"
 
-void	ft_push_swap(t_stack *stk)
+t_node	*ft_lstnew(int num, int idx)
 {
-	return ;
+	t_node	*node;
+
+	node = (t_node*) malloc(sizeof(t_node));
+	if (!node)
+		return (NULL);
+	node->num = num;
+	node->prev = NULL;
+	node->next = NULL;
+	return (node);
 }

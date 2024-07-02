@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_push_swap.c                                     :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehukim <jaehukim42@student.42gyeong      +#+  +:+       +#+        */
+/*   By: jaehukim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/30 17:04:32 by jaehukim          #+#    #+#             */
-/*   Updated: 2024/06/30 17:04:35 by jaehukim         ###   ########.fr       */
+/*   Created: 2024/03/12 19:50:20 by jaehukim          #+#    #+#             */
+/*   Updated: 2024/03/13 20:06:02 by jaehukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+#include "libft.h"
 #include "../includes/push_swap.h"
 
-void	ft_push_swap(t_stack *stk)
+int	ft_lstsize(t_node *lst)
 {
-	return ;
+	int	cnt;
+
+	cnt = 0;
+	if (!lst)
+		return (0);
+	while (lst->next != NULL)
+	{
+		lst = lst->next;
+		cnt++;
+	}
+	return (++cnt);
 }

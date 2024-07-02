@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_push_swap.c                                     :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehukim <jaehukim42@student.42gyeong      +#+  +:+       +#+        */
+/*   By: jaehukim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/30 17:04:32 by jaehukim          #+#    #+#             */
-/*   Updated: 2024/06/30 17:04:35 by jaehukim         ###   ########.fr       */
+/*   Created: 2024/03/12 16:24:52 by jaehukim          #+#    #+#             */
+/*   Updated: 2024/03/13 20:05:46 by jaehukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+#include "libft.h"
 #include "../includes/push_swap.h"
 
-void	ft_push_swap(t_stack *stk)
+void	ft_lstadd_front(t_node **lst, t_node *new)
 {
-	return ;
+	if (!new)
+		return ;
+	new->next = *lst;
+	*lst = new;
 }

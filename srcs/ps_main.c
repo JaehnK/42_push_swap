@@ -18,40 +18,59 @@ void	ft_error(void)
 	exit(EXIT_FAILURE);
 }
 
-void	ft_print_stacks(t_stacks *stk)
+void	ft_print_lst(t_stack *a, t_stack *b)
 {
-	int	idx;
+	int		idx = 0;
+	t_node	*a_node = a->head;
+	t_node	*b_node = b->head;
 
-	idx = 0;
-	while (!(idx >= stk->len_a) || !(idx >= stk->len_b))
+	printf("a_size : %d b_size : %d\n", a->size, b->size);
+	while (idx < a->size || idx < b->size)
 	{
-		if (idx < stk->len_a)
-			ft_printf("%d  ", stk->a[idx]);
+		if (idx <= a->size)
+		{
+			printf("%d  ", a_node->num);
+			a_node = a_node->next;
+		}
 		else
-			ft_printf("N  ");
-		if (idx < stk->len_b)
-			ft_printf("%d\n", stk->b[idx]);
+			printf("N  ");
+		if (idx < b->size)
+		{
+			printf("%d\n", b_node->num);
+			b_node = b_node->next;
+		}
 		else
-			ft_printf("N\n");
+			printf("N\n");
 		idx++;
 	}
-	ft_printf("----\na  b\n");
+	printf("------\na  b\n");
 }
 
 int	main(int argc, char **argv)
 {
 	int			idx;
-	t_stacks	*stack;
+	t_stack		*a;
+	t_stack		*b;
 
 	idx = 0;
 	if (argc < 2)
 		exit(EXIT_FAILURE);
 	ft_check_ag(argc, argv);
-	ft_init_stack(&stack, argc, argv);
-	ft_dup_srt_chk(stack);
-	ft_push_swap(stack);
-	free(stack->a);
-	free(stack->b);
-	free(stack);
+	a = ft_init_stack(argc, argv);
+	b = ft_init_stk_b();
+	pb(a, b, 1);
+	pb(a, b, 1);
+	pb(a, b, 1);
+	ft_print_lst(a, b);
+	rra(a, 1);
+	ft_print_lst(a, b);
+	rrb(b, 1);
+	ft_print_lst(a, b);
+	//ft_init_stack(&stack, argc, argv);
+	//ft_dup_srt_chk(stack);
+	//ft_push_swap(stack);
+	//free(stack->a);
+	//free(stack->b);
+	//free(stack);
 	return (EXIT_SUCCESS);
 }
