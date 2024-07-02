@@ -15,5 +15,7 @@
 void	ft_push_swap(t_stacks *stk)
 {
 	if (stk->len_a <= 3)
-		ft_sort_unders_three(*stk);
+		ft_sort_under_three(stk);
+	else
+		insertion_sort(stk);
 }

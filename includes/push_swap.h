@@ -32,7 +32,8 @@ typedef struct s_stacks
 void	ft_error(void);
 void	ft_check_ag(int argc, char **argv);
 void	ft_init_stack(t_stacks **stack, int argc, char **argv);
-int		ft_sort_chk(t_stacks *stk);
+int		ft_sort_chka(t_stacks *stk);
+int		ft_sort_chkb(t_stacks *stk);
 void	ft_dup_srt_chk(t_stacks *stack);
 void	ft_print_stacks(t_stacks *stk);
 void	swap(int *a, int *b);
@@ -48,6 +49,6 @@ void	rra(t_stacks *stk, int verbose);
 void	rrb(t_stacks *stk, int verbose);
 void	rrr(t_stacks *stk, int verbose);
 void	ft_push_swap(t_stacks *stk);
-void	ft_sort_three(t_stacks *stk);
-
+void	ft_sort_under_three(t_stacks *stk);
+void	insertion_sort(t_stacks *stk);
 #endif

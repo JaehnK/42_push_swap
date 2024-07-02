@@ -11,25 +11,28 @@
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
+ 
 static void	ft_dup_chk(t_stacks *stk)
 {
-	int	idx;
-	int	*dup_arr;
+	int	i;
+	int	j;
 
-	idx = 0;
-	dup_arr = (int *) ft_calloc(sizeof(int), (stk->max - stk->min + 4));
-	while (idx < stk->len_a)
+	i = 0;
+	while (i < stk->len_a)
 	{
-		dup_arr[stk->a[idx] - stk->min]++;
-		if (dup_arr[stk->a[idx] - stk->min] > 1)
-			ft_error();
-		idx++;
+		j = i + 1;
+		while (j < stk->len_a)
+		{
+			if (stk->a[i] == stk->a[j])
+				ft_error();
+			j++;
+		}
+		i++;
 	}
-	free(dup_arr);
+	return ;
 }
 
-int	ft_sort_chk(t_stacks *stk)
+int	ft_sort_chka(t_stacks *stk)
 {
 	int	idx;
 	int	max;
@@ -47,9 +50,27 @@ int	ft_sort_chk(t_stacks *stk)
 	return (1);
 }
 
+int	ft_sort_chkb(t_stacks *stk)
+{
+	int	idx;
+	int	max;
+
+	idx = 1;
+	max = stk->b[0];
+	while (idx <= stk->len_b)
+	{
+		if (stk->b[idx] >= max)
+			max = stk->b[idx];
+		else
+			return (0);
+		idx++;
+	}
+	return (1);
+}
+
 void	ft_dup_srt_chk(t_stacks *stk)
 {
 	ft_dup_chk(stk);
-	if (ft_sort_chk(stk))
+	if (ft_sort_chka(stk))
 		ft_error();
 }

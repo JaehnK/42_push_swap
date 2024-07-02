@@ -6,14 +6,14 @@
 #    By: jaehukim <jaehukim42@student.42gyeong      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/25 15:44:01 by jaehukim          #+#    #+#              #
-#    Updated: 2024/06/26 22:05:31 by jaehukim         ###   ########.fr        #
+#    Updated: 2024/06/30 22:59:33 by jaehukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 HEADR = ./includes/push_swap.h
 CC = clang
-CFLAGS =  -fsanitize=address  -g
+CFLAGS =  -g
 
 LIB = ./libft/libft.a
 SUBDIR = ./libft

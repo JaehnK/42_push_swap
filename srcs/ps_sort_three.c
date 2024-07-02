@@ -34,12 +34,13 @@ void	ft_sort_three2(t_stacks *stk)
 		}
 }
 
-void	ft_sort_unders_three(t_stacks *stk)
+void	ft_sort_under_three(t_stacks *stk)
 {
 	if (stk->len_a == 2)
 	{
 		if (stk->a[0] > stk->a[1])
 			sa(stk, 1);
+		return ;
 	}
 	if ((stk->a[0] < stk->a[1]) && (stk->a[0] < stk->a[2]))
 		ft_sort_three1(stk);
