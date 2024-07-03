@@ -12,46 +12,51 @@
 
 #include "../includes/push_swap.h"
 
-//void	ft_sort_three1(t_stacks *stk)
-//{
-//		if ((stk->a[1] < stk->a[2]))
-//			return ;
-//		else
-//		{
-//			rra(stk, 1);
-//			sa(stk, 2);
-//		}
-//	}
-
-//void	ft_sort_three2(t_stacks *stk)
-//{
-//		if ((stk->a[1] < stk->a[2]))
-//			ra(stk, 1);
-//		else
-//		{
-//			ra(stk, 1);
-//			sa(stk, 1);
-//		}
-//}
-
-void	ft_sort_under_three(t_stack *stk)
+static void	ft_sort_three1(t_stack *a)
 {
-	return ;
-	//if (stk->len_a == 2)
-	//{
-	//	if (stk->a[0] > stk->a[1])
-	//		sa(stk, 1);
-	//	return ;
-	//}
-	//if ((stk->a[0] < stk->a[1]) && (stk->a[0] < stk->a[2]))
-	//	ft_sort_three1(stk);
-	//else if ((stk->a[0] > stk->a[1]) && (stk->a[0] > stk->a[2]))
-	//	ft_sort_three2(stk);
-	//else
-	//{
-	//	if ((stk->a[1] < stk->a[2]))
-	//		sa(stk, 1);
-	//	else
-	//		rra(stk, 1);
-	//}
+		if (a->tail->prev->num < a->tail->num)
+			return ;
+		else
+		{
+			rra(a, 1);
+			sa(a, 1);
+		}
+	}
+
+static void	ft_sort_three2(t_stack *a)
+{
+		if (a->tail->prev->num < a->tail->num)
+			ra(a, 1);
+		else
+		{
+			ra(a, 1);
+			sa(a, 1);
+		}
+}
+
+void	ft_tiny_sort(t_stack *a)
+{
+	t_node	*second;
+
+	second = a->head->next;
+
+	if (a->size == 2)
+	{
+		if (a->tail->num > a->head->num)
+			sa(a, 1);
+		return ;
+	}
+	if (a->head->num < second->num && \
+		a->head->num < a->tail->num)
+		ft_sort_three1(a);
+	else if (a->head->num > second->num &&\
+		 	a->head->num > a->tail->num)
+		ft_sort_three2(a);
+	else
+	{
+		if (a->head->next->num < a->tail->num)
+			sa(a, 1);
+		else
+			rra(a, 1);
+	}
 }

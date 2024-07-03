@@ -16,8 +16,14 @@ void	pa(t_stack *a, t_stack *b, int verbose)
 {
 	t_node *pop;
 
+	if (!b->head)
+		return ;
 	pop = b->head;
 	b->head = pop->next;
+	if (b->head)
+		b->head->prev = NULL;
+	else
+		b->tail = NULL;
 	b->size--;
 	pop->next = a->head;
 	if (a->head)
@@ -34,16 +40,22 @@ void	pb(t_stack *a, t_stack *b, int verbose)
 {
 	t_node *pop;
 
+	if (!a->head)
+		return ;
 	pop = a->head;
 	a->head = pop->next;
 	a->size--;
+	if (a->head)
+		a->head->prev = NULL;
+	else
+		b->tail = NULL;
 	pop->next = b->head;
-	if(b->head)
+	if (b->head)
 		b->head->prev = pop;
 	if(!b->tail)
 		b->tail = pop;
 	b->head = pop;
 	b->size++;
 	if (verbose)
-		write(1, "pa\n", 3);
+		write(1, "pb\n", 3);
 }

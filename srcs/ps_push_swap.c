@@ -12,7 +12,12 @@
 
 #include "../includes/push_swap.h"
 
-void	ft_push_swap(t_stack *stk)
+void	ft_push_swap(t_stack *a, t_stack *b)
 {
+	
+	if (a->size < 4)
+		ft_tiny_sort(a);
+	else
+		ft_radix_sort(a, b);
 	return ;
 }

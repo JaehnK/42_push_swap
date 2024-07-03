@@ -12,6 +12,34 @@
 
 #include "../includes/push_swap.h"
 
+static char	*ft_get_3digit(int n)
+{
+	int		idx;
+	int		mok;
+	char	*digit;
+
+	idx = 0;
+	if (n == INT_MIN)
+		return ("20120201121222121121_");
+	digit = (char *) malloc(sizeof(char) * 22);
+	if (!digit)
+		ft_error();
+	if (n < 0)
+	{
+		digit[20] = '-';
+		n *= -1;
+	}
+	else
+		digit[20] = '+';
+	while (idx < 20)
+	{
+		digit[idx++] = (n % 3) + '0';
+		n /= 3;
+	}
+	digit[21] = '\0';
+	return (digit);
+}
+
 static void	ft_free_2dim(char **tmp)
 {
 	int	i;
@@ -61,6 +89,7 @@ t_stack	*ft_init_stack(int argc, char **argv)
 	stk->head = head;
 	stk->tail = ft_lstlast(head);
 	stk->size = ft_lstsize(head);
+	ft_lstiter(stk->head, ft_get_3digit);
 	return (stk);
 }
 

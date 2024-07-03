@@ -27,7 +27,7 @@ void	ft_print_lst(t_stack *a, t_stack *b)
 	printf("a_size : %d b_size : %d\n", a->size, b->size);
 	while (idx < a->size || idx < b->size)
 	{
-		if (idx <= a->size)
+		if (idx < a->size)
 		{
 			printf("%d  ", a_node->num);
 			a_node = a_node->next;
@@ -43,7 +43,7 @@ void	ft_print_lst(t_stack *a, t_stack *b)
 			printf("N\n");
 		idx++;
 	}
-	printf("------\na  b\n");
+	printf("------\na  b\n\n");
 }
 
 int	main(int argc, char **argv)
@@ -58,17 +58,8 @@ int	main(int argc, char **argv)
 	ft_check_ag(argc, argv);
 	a = ft_init_stack(argc, argv);
 	b = ft_init_stk_b();
-	pb(a, b, 1);
-	pb(a, b, 1);
-	pb(a, b, 1);
-	ft_print_lst(a, b);
-	rra(a, 1);
-	ft_print_lst(a, b);
-	rrb(b, 1);
-	ft_print_lst(a, b);
-	//ft_init_stack(&stack, argc, argv);
-	//ft_dup_srt_chk(stack);
-	//ft_push_swap(stack);
+	ft_dup_srt_chk(a);
+	ft_push_swap(a, b);
 	//free(stack->a);
 	//free(stack->b);
 	//free(stack);

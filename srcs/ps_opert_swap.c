@@ -25,7 +25,7 @@ void	sa(t_stack *a, int verbose)
 {
 	t_node	*node;
 	
-	if (a->size)
+	if (a->size < 2)
 		return ;
 	node = a->head;
 	a->head = a->head->next;
@@ -42,7 +42,7 @@ void	sb(t_stack *b, int verbose)
 {
 	t_node	*node;
 	
-	if (b->size)
+	if (b->size < 2)
 		return ;
 	node = b->head;
 	b->head = b->head->next;

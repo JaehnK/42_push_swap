@@ -20,10 +20,10 @@ void	ra(t_stack *a, int verbose)
 		return ;
 	node = a->head;
 	a->head = a->head->next;
-	a->head->prev = NULL;
-	a->tail->next = node;
-	node->prev = a->tail;
-	a->tail = node;
+	node->prev = ft_lstlast(a->head);
+	node->next = NULL;
+	ft_lstlast(a->head)->next = node;
+	a->tail = ft_lstlast(a->head);
 	if (verbose)
 		write(1, "ra\n", 3);
 }
@@ -35,10 +35,10 @@ void	rb(t_stack *b, int verbose)
 		return ;
 	node = b->head;
 	b->head = b->head->next;
-	b->head->prev = NULL;
-	b->tail->next = node;
-	node->prev = b->tail;
-	b->tail = node;
+	node->prev = ft_lstlast(b->head);
+	node->next = NULL;
+	ft_lstlast(b->head)->next = node;
+	b->tail = ft_lstlast(b->head);
 	if (verbose)
 		write(1, "rb\n", 3);
 }

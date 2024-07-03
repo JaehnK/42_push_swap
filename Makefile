@@ -39,6 +39,7 @@ SRCS = 	libft_lst/ft_lstadd_back.c\
 		ps_push_swap.c \
 		ps_sort_three.c \
 		ps_parse_lst.c \
+		ps_radix_sort.c \
 
 
 SRCS := $(addprefix $(SRCS_DIR)/, $(SRCS))
