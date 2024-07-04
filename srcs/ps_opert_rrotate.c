@@ -23,6 +23,7 @@ void	rra(t_stack *a, int verbose)
 	node->next = a->head;
 	a->tail = a->tail->prev;
 	a->head->prev = node;
+	a->tail->next = NULL;
 	a->head = node;
 	if (verbose)
 		write(1, "rra\n", 4);
@@ -35,10 +36,11 @@ void	rrb(t_stack *b, int verbose)
 	if (b->size < 2)
 		return ;
 	node = b->tail;
-	node->prev = NULL;
-	node->next = b->head;
 	b->tail = b->tail->prev;
+	b->tail->next = NULL;
 	b->head->prev = node;
+	node->next = b->head;
+	node->prev = NULL;
 	b->head = node;
 	if (verbose)
 		write(1, "rrb\n", 4);

@@ -48,7 +48,7 @@ void	pb(t_stack *a, t_stack *b, int verbose)
 	if (a->head)
 		a->head->prev = NULL;
 	else
-		b->tail = NULL;
+		a->tail = NULL;
 	pop->next = b->head;
 	if (b->head)
 		b->head->prev = pop;

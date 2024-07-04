@@ -34,17 +34,20 @@ typedef struct	s_stack
 	t_node	*tail;
 }	t_stack;
 
+typedef struct s_radix
+{
+	int	zeros;
+	int	ones;
+	int	twos;
+}	t_radix;
+
 
 
 void	ft_error(void);
 void	ft_check_ag(int argc, char **argv);
 t_stack	*ft_init_stack(int argc, char **argv);
 t_stack *ft_init_stk_b(void);
-
-//int		ft_sort_chka(t_stack *stk);
-//int		ft_sort_chkb(t_stack *stk);
 void	ft_dup_srt_chk(t_stack *a);
-//void	ft_print_stacks(t_stack *stk);
 
 t_node	*ft_lstnew(int num, int idx);
 void	ft_lstadd_front(t_node **lst, t_node *new);
