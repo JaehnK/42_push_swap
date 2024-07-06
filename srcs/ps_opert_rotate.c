@@ -12,7 +12,7 @@
 
 #include "../includes/push_swap.h"
 
-void	ra(t_stack *a, int verbose)
+void	ra(t_stack *a, t_cmdlist *lst, int verbose)
 {
 	t_node	*node;
 
@@ -26,9 +26,10 @@ void	ra(t_stack *a, int verbose)
 	ft_lstlast(a->head)->next = node;
 	a->tail = node;
 	if (verbose)
-		write(1, "ra\n", 3);
+		ft_add_cmd(&lst, "ra\n");
 }
-void	rb(t_stack *b, int verbose)
+
+void	rb(t_stack *b, t_cmdlist *lst, int verbose)
 {
 	t_node	*node;
 
@@ -42,15 +43,15 @@ void	rb(t_stack *b, int verbose)
 	ft_lstlast(b->head)->next = node;
 	b->tail = node;
 	if (verbose)
-		write(1, "rb\n", 3);
+		ft_add_cmd(&lst, "rb\n");
 }
 
-void	rr(t_stack *a, t_stack *b, int verbose)
+void	rr(t_stack *a, t_stack *b, t_cmdlist *lst, int verbose)
 {
 	if (a->size < 2 || b->size < 2)
 		return ;
-	ra(a, 0);
-	rb(b, 0);
+	ra(a, lst, 0);
+	rb(b, lst, 0);
 	if (verbose)
-		write(1, "rr\n", 3);
+		ft_add_cmd(&lst, "rr\n");
 }

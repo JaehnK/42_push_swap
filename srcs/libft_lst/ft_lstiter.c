@@ -16,7 +16,7 @@ void	ft_lstiter(t_node *lst, char *(*f)(int))
 {
 	while (lst)
 	{
-		lst->base = f(lst->num);
+		lst->base = f(lst->rank);
 		lst = lst->next;
 	}
 }

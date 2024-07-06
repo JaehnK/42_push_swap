@@ -21,10 +21,10 @@ void	swap(int *a, int *b)
 	*b = tmp;
 }
 
-void	sa(t_stack *a, int verbose)
+void	sa(t_stack *a, t_cmdlist *lst, int verbose)
 {
 	t_node	*node;
-	
+
 	if (a->size < 2)
 		return ;
 	node = a->head;
@@ -34,14 +34,14 @@ void	sa(t_stack *a, int verbose)
 	a->head->next = node;
 	a->head->prev = NULL;
 	if (verbose)
-		write(1, "sa\n", 3);
+		ft_add_cmd(&lst, "sa\n");
 	return ;
 }
 
-void	sb(t_stack *b, int verbose)
+void	sb(t_stack *b, t_cmdlist *lst, int verbose)
 {
 	t_node	*node;
-	
+
 	if (b->size < 2)
 		return ;
 	node = b->head;
@@ -51,15 +51,15 @@ void	sb(t_stack *b, int verbose)
 	b->head->next = node;
 	b->head->prev = NULL;
 	if (verbose)
-		write(1, "sb\n", 3);
+		ft_add_cmd(&lst, "sb\n");
 	return ;
 }
 
-void	ss(t_stack *a, t_stack *b, int verbose)
+void	ss(t_stack *a, t_stack *b, t_cmdlist *lst, int verbose)
 {
-	sa(a, 0);
-	sb(b, 0);
+	sa(a, lst, 0);
+	sb(b, lst, 0);
 	if (verbose)
-		write(1, "ss\n", 3);
+		ft_add_cmd(&lst, "ss\n");
 	return ;
 }

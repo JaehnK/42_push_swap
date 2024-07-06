@@ -12,24 +12,25 @@
 
 #include "../includes/push_swap.h"
 
-void	rra(t_stack *a, int verbose)
+void	rra(t_stack *a, t_cmdlist *lst, int verbose)
 {
 	t_node	*node;
 
 	if (a->size < 2)
 		return ;
 	node = a->tail;
+	a->tail = a->tail->prev;
+	if (a->tail)
+		a->tail->next = NULL;
 	node->prev = NULL;
 	node->next = a->head;
-	a->tail = a->tail->prev;
 	a->head->prev = node;
-	a->tail->next = NULL;
 	a->head = node;
 	if (verbose)
-		write(1, "rra\n", 4);
+		ft_add_cmd(&lst, "rra\n");
 }
 
-void	rrb(t_stack *b, int verbose)
+void	rrb(t_stack *b, t_cmdlist *lst, int verbose)
 {
 	t_node	*node;
 
@@ -37,21 +38,22 @@ void	rrb(t_stack *b, int verbose)
 		return ;
 	node = b->tail;
 	b->tail = b->tail->prev;
-	b->tail->next = NULL;
-	b->head->prev = node;
-	node->next = b->head;
+	if (b->tail)
+		b->tail->next = NULL;
 	node->prev = NULL;
+	node->next = b->head;
+	b->head->prev = node;
 	b->head = node;
 	if (verbose)
-		write(1, "rrb\n", 4);
+		ft_add_cmd(&lst, "rrb\n");
 }
 
-void	rrr(t_stack *a, t_stack *b, int verbose)
+void	rrr(t_stack *a, t_stack *b, t_cmdlist *lst, int verbose)
 {
 	if (a->size < 2 || b->size < 2)
 		return ;
-	rra(a, 0);
-	rrb(b, 0);
+	rra(a, lst, 0);
+	rrb(b, lst, 0);
 	if (verbose)
-		write(1, "rrr\n", 4);
+		ft_add_cmd(&lst, "rrr\n");
 }

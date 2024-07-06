@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
- 
+
 static void	ft_dup_chk(t_stack *a)
 {
 	t_node	*pivot;
@@ -56,5 +56,5 @@ void	ft_dup_srt_chk(t_stack *a)
 	if (a->size < 2)
 		exit(EXIT_SUCCESS);
 	if (ft_sort_chk(a))
-		ft_error();
+		exit(EXIT_FAILURE);
 }

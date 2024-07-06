@@ -18,50 +18,43 @@ void	ft_error(void)
 	exit(EXIT_FAILURE);
 }
 
-void	ft_print_lst(t_stack *a, t_stack *b)
+void	ft_free_list(t_stack **a, t_stack **b)
 {
-	int		idx = 0;
-	t_node	*a_node = a->head;
-	t_node	*b_node = b->head;
+	t_node	*tmp;
 
-	printf("a_size : %d b_size : %d\n", a->size, b->size);
-	while (idx < a->size || idx < b->size)
+	while ((*a)->head)
 	{
-		if (idx < a->size)
-		{
-			printf("%d  ", a_node->num);
-			a_node = a_node->next;
-		}
-		else
-			printf("N  ");
-		if (idx < b->size)
-		{
-			printf("%d\n", b_node->num);
-			b_node = b_node->next;
-		}
-		else
-			printf("N\n");
-		idx++;
+		tmp = (*a)->head->next;
+		free((*a)->head->base);
+		free((*a)->head);
+		(*a)->head = tmp;
 	}
-	printf("------\na  b\n\n");
+	while ((*b)->head)
+	{
+		tmp = (*b)->head->next;
+		free((*b)->head->base);
+		free((*b)->head);
+		(*b)->head = tmp;
+	}
+	free(*a);
+	free(*b);
 }
 
 int	main(int argc, char **argv)
 {
-	int			idx;
-	t_stack		*a;
-	t_stack		*b;
+	t_cmdlist		*lst;
+	t_stack			*a;
+	t_stack			*b;
 
-	idx = 0;
 	if (argc < 2)
 		exit(EXIT_FAILURE);
 	ft_check_ag(argc, argv);
 	a = ft_init_stack(argc, argv);
 	b = ft_init_stk_b();
 	ft_dup_srt_chk(a);
-	ft_push_swap(a, b);
-	//free(stack->a);
-	//free(stack->b);
-	//free(stack);
+	lst = (t_cmdlist *) malloc(sizeof(t_cmdlist));
+	lst->head = NULL;
+	ft_push_swap(a, b, lst);
+	ft_free_list(&a, &b);
 	return (EXIT_SUCCESS);
 }

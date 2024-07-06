@@ -12,10 +12,9 @@
 
 #include "../includes/push_swap.h"
 
-static char	*ft_get_3digit(int n)
+static char	*ft_get_dbldigit(int n)
 {
 	int		idx;
-	int		mok;
 	char	*digit;
 
 	idx = 0;
@@ -33,8 +32,8 @@ static char	*ft_get_3digit(int n)
 		digit[20] = '+';
 	while (idx < 20)
 	{
-		digit[idx++] = (n % 3) + '0';
-		n /= 3;
+		digit[idx++] = (n % 2) + '0';
+		n /= 2;
 	}
 	digit[21] = '\0';
 	return (digit);
@@ -58,7 +57,7 @@ void	ft_alloc_lst(t_node **head, int start, int len, char **nums)
 	idx = start;
 	while (idx < len)
 	{
-		node = ft_lstnew(ft_atoi(nums[idx]), idx);
+		node = ft_lstnew(ft_atoi(nums[idx]));
 		if (idx == start)
 			*head = node;
 		else
@@ -89,13 +88,14 @@ t_stack	*ft_init_stack(int argc, char **argv)
 	stk->head = head;
 	stk->tail = ft_lstlast(head);
 	stk->size = ft_lstsize(head);
-	ft_lstiter(stk->head, ft_get_3digit);
+	ft_convert_rank(&stk);
+	ft_lstiter(stk->head, ft_get_dbldigit);
 	return (stk);
 }
 
-t_stack *ft_init_stk_b(void)
+t_stack	*ft_init_stk_b(void)
 {
-	t_stack *stk;
+	t_stack	*stk;
 
 	stk = (t_stack *) malloc(sizeof(t_stack));
 	stk->head = NULL;

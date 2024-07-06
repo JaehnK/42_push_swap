@@ -12,12 +12,12 @@
 
 #include "../includes/push_swap.h"
 
-void	ft_push_swap(t_stack *a, t_stack *b)
+void	ft_push_swap(t_stack *a, t_stack *b, t_cmdlist *lst)
 {
-	
-	if (a->size < 4)
-		ft_tiny_sort(a);
+	if (a->size < 6)
+		ft_tiny_sort(a, b, lst);
 	else
-		ft_radix_sort(a, b);
+		ft_radix_sort(a, b, lst);
+	ft_print_cmd(&lst);
 	return ;
 }

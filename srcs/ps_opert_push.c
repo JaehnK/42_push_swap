@@ -12,9 +12,9 @@
 
 #include "../includes/push_swap.h"
 
-void	pa(t_stack *a, t_stack *b, int verbose)
+void	pa(t_stack *a, t_stack *b, t_cmdlist *lst, int verbose)
 {
-	t_node *pop;
+	t_node	*pop;
 
 	if (!b->head)
 		return ;
@@ -33,12 +33,12 @@ void	pa(t_stack *a, t_stack *b, int verbose)
 	a->head = pop;
 	a->size++;
 	if (verbose)
-		write(1, "pa\n", 3);
+		ft_add_cmd(&lst, "pa\n");
 }
 
-void	pb(t_stack *a, t_stack *b, int verbose)
+void	pb(t_stack *a, t_stack *b, t_cmdlist *lst, int verbose)
 {
-	t_node *pop;
+	t_node	*pop;
 
 	if (!a->head)
 		return ;
@@ -52,10 +52,10 @@ void	pb(t_stack *a, t_stack *b, int verbose)
 	pop->next = b->head;
 	if (b->head)
 		b->head->prev = pop;
-	if(!b->tail)
+	if (!b->tail)
 		b->tail = pop;
 	b->head = pop;
 	b->size++;
 	if (verbose)
-		write(1, "pb\n", 3);
+		ft_add_cmd(&lst, "pb\n");
 }

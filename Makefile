@@ -6,15 +6,14 @@
 #    By: jaehukim <jaehukim42@student.42gyeong      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/25 15:44:01 by jaehukim          #+#    #+#              #
-#    Updated: 2024/07/04 14:33:06 by jaehukim         ###   ########.fr        #
+#    Updated: 2024/07/07 01:58:04 by jaehukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 HEADR = ./includes/push_swap.h
 CC = clang
-CFLAGS = -g
-
+CFLAGS = -Werror -Wextra -Wall -g -fsanitize=address
 LIB = ./libft/libft.a
 SUBDIR = ./libft
 
@@ -37,9 +36,14 @@ SRCS = 	libft_lst/ft_lstadd_back.c\
 		ps_opert_rotate.c \
 		ps_opert_rrotate.c \
 		ps_push_swap.c \
-		ps_sort_three.c \
+		ps_tiny_sort.c \
+		ps_five_sort.c \
 		ps_parse_lst.c \
 		ps_radix_sort.c \
+		ps_bsort.c \
+		ps_optim_cmd.c \
+
+
 
 
 SRCS := $(addprefix $(SRCS_DIR)/, $(SRCS))

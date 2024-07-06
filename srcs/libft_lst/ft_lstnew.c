@@ -13,11 +13,11 @@
 #include "libft.h"
 #include "../includes/push_swap.h"
 
-t_node	*ft_lstnew(int num, int idx)
+t_node	*ft_lstnew(int num)
 {
 	t_node	*node;
 
-	node = (t_node*) malloc(sizeof(t_node));
+	node = (t_node *) malloc(sizeof(t_node));
 	if (!node)
 		return (NULL);
 	node->num = num;
