@@ -54,3 +54,10 @@ void	ft_sort_five(t_stack *a, t_stack *b, t_cmdlist *lst)
 	pa(a, b, lst, 1);
 	pa(a, b, lst, 1);
 }
+
+void	ft_sort_four(t_stack *a, t_stack *b, t_cmdlist *lst)
+{
+	ft_mouve_to_b(a, b, lst, 0);
+	ft_sort_three(a, lst);
+	pa(a, b, lst, 1);
+}

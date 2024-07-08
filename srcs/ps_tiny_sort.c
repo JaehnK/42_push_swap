@@ -64,6 +64,8 @@ void	ft_tiny_sort(t_stack *a, t_stack *b, t_cmdlist *lst)
 	}
 	if (a->size == 3)
 		ft_sort_three(a, lst);
+	else if (a->size == 4)
+		ft_sort_four(a, b, lst);
 	if (a->size == 5)
 		ft_sort_five(a, b, lst);
 }

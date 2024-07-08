@@ -87,4 +87,6 @@ void	ft_add_cmd(t_cmdlist **lst, char *cmd);
 void	ft_print_cmd(t_cmdlist **lst);
 void	ft_sort_three(t_stack *a, t_cmdlist *lst);
 void	ft_sort_five(t_stack *a, t_stack *b, t_cmdlist *lst);
+void	ft_sort_four(t_stack *a, t_stack *b, t_cmdlist *lst);
+
 #endif
